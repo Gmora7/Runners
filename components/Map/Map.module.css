@@ -1,0 +1,15 @@
+.map {
+	width: 60%;
+}
+
+@media (max-width: 1024px) {
+	.map {
+		width: 90%;
+	}
+}
+
+@media (max-width: 768px) {
+	.map {
+		width: 90%;
+	}
+}

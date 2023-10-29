@@ -1,0 +1,21 @@
+.mission {
+	margin-right: 1.5rem;
+}
+
+.mission h2 {
+	font-weight: bold;
+	font-size: 1.5rem;
+	border-bottom: 4px solid #00cc66;
+}
+
+.mission p {
+	margin-top: 1rem;
+	font-size: 1rem;
+}
+
+@media (max-width: 1024px) {
+	.mission {
+		margin-bottom: 1rem;
+		margin-right: 0;
+	}
+}

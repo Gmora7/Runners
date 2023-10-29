@@ -1,0 +1,78 @@
+/* Navbar Styles */
+.navbar {
+	background-color: #0280ff;
+	padding: 10px 0;
+}
+
+.container {
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 0 20px;
+}
+
+.navbar-flex {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+/* Logo Styles */
+.logo-img {
+	width: 120px;
+	height: auto;
+}
+
+/* Navigation Links Styles */
+.navbar-links {
+	list-style: none;
+	padding: 0;
+	display: flex;
+	justify-content: space-around;
+	margin-left: 10px;
+}
+
+.navbar-links li {
+	margin-right: 15px;
+}
+
+.navbar-links a {
+	color: white;
+	text-decoration: none;
+	transition: color 0.3s;
+}
+
+.navbar-links a:hover {
+	border-bottom: 2px solid #35b158;
+	color: rgb(219, 218, 218);
+}
+
+/* Login Button Styles */
+.login-button {
+	text-align: right;
+}
+
+/* Media Query for Responsive Design */
+@media (max-width: 1024px) {
+	.navbar-flex {
+		flex-direction: column;
+		align-items: center;
+	}
+
+	.logo-img {
+		margin-bottom: 10px;
+	}
+
+	.navbar-links {
+		flex-direction: column;
+		align-items: center;
+	}
+
+	.navbar-links li {
+		margin-right: 0;
+		margin-bottom: 10px;
+	}
+
+	.login-button {
+		text-align: center;
+	}
+}
