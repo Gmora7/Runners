@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import PotentialUsers from "@/models/potentialUsers";
+import PotentialUsers from "@/models/PotentialUsers";
 import db from "@/utils/getConnection";
 
 export const GET = async () => {
