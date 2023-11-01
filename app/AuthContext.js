@@ -3,7 +3,7 @@ import { createContext, useContext, useState, useEffect } from "react";
 
 const AuthContext = createContext();
 
-export function useAuth() {
+export function UseAuth() {
 	return useContext(AuthContext);
 }
 

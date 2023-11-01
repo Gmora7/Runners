@@ -2,10 +2,10 @@
 import logo from "@/public/ccdr-logo.png";
 import styles from "./Navbar.module.css";
 import Link from "next/link";
-import { useAuth } from "@/app/AuthContext";
+import { UseAuth } from "@/app/AuthContext";
 
 const Navbar = () => {
-	const { isLoggedIn, userRole } = useAuth();
+	const { isLoggedIn, userRole } = UseAuth();
 	return (
 		<nav className={styles.navbar}>
 			<div className={styles.container}>

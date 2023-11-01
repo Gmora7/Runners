@@ -2,14 +2,14 @@
 import { useRef } from "react";
 import Button from "@/components/Button/Button";
 import { useRouter } from "next/navigation";
-import { useAuth } from "@/app/AuthContext";
+import { UseAuth } from "@/app/AuthContext";
 import Link from "next/link";
 
 export default function Login() {
 	const router = useRouter();
 	const emailRef = useRef<HTMLInputElement>(null);
 	const passwordRef = useRef<HTMLInputElement>(null);
-	const { setIsLoggedIn, setUserRole } = useAuth();
+	const { setIsLoggedIn, setUserRole } = UseAuth();
 
 	const handlerSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
 		event.preventDefault();
