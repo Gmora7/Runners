@@ -16,7 +16,6 @@ const UserSchema = new Schema(
 		rol: {
 			type: Boolean,
 			required: true,
-			trim: true,
 		},
 		identification: {
 			type: String,
@@ -51,6 +50,10 @@ const UserSchema = new Schema(
 			type: String,
 			required: true,
 			trim: true,
+		},
+		isSuscribed: {
+			type: Boolean,
+			default: false,
 		},
 	},
 	{

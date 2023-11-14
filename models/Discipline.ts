@@ -4,6 +4,7 @@ interface Discipline {
 	title: string;
 	description: string;
 	categories: mongoose.Types.ObjectId[];
+	hasTime: boolean;
 }
 
 const DisciplineSchema = new Schema<Discipline>(
@@ -25,6 +26,11 @@ const DisciplineSchema = new Schema<Discipline>(
 				required: true,
 			},
 		],
+		hasTime: {
+			type: Boolean,
+			default: true,
+			required: true,
+		}
 	},
 	{
 		timestamps: true,

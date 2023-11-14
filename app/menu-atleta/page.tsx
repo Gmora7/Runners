@@ -7,7 +7,16 @@ import AdministratorOption from "@/components/AdministratorOption/AdministratorO
 export default function AthleteMenu() {
 	const router = useRouter();
 	const handlerMiPerfil = () => {
-
+		router.push("/mi-perfil");
+	};
+	const handlerInscripcion = () => {
+		router.push("/inscripcion");
+	};
+	const handlerMarca = () => {
+		router.push("/registrar-tiempo");
+	};
+	const handlerEvaluation = () => {
+		router.push("/evaluacion-entrenadores");
 	};
 	return (
 		<div className="bg-gray-100 min-h-screen">
@@ -17,8 +26,26 @@ export default function AthleteMenu() {
 					<AdministratorOption
 						title="Mi Perfil"
 						description="Ver o modificar tus datos de atleta."
-						buttonLabel="Mi Perfil"
+						buttonLabel="Ver/Modificar"
 						onClick={handlerMiPerfil}
+					/>
+					<AdministratorOption
+						title="Inscripción"
+						description="Inscríbete a próximas competencias."
+						buttonLabel="Inscribirse"
+						onClick={handlerInscripcion}
+					/>
+					<AdministratorOption
+						title="Registrar Marca"
+						description="Registra una marca que hayas logrado recientemente."
+						buttonLabel="Registrar Marca"
+						onClick={handlerMarca}
+					/>
+					<AdministratorOption
+						title="Evaluación de entrenadores"
+						description="Danos tu opinión sobre los entrenadores."
+						buttonLabel="Evaluar"
+						onClick={handlerEvaluation}
 					/>
 				</div>
 			</div>

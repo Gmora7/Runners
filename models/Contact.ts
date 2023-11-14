@@ -1,10 +1,5 @@
 import { Schema, model, models } from "mongoose";
-
-interface Contact {
-	name: string;
-	phone: string;
-	responsability: string;
-}
+import { Contact } from "../types";
 
 const ContactSchema = new Schema<Contact>(
 	{
@@ -20,7 +15,7 @@ const ContactSchema = new Schema<Contact>(
 			trim: true,
 			maxlength: [9, "identification cannot be grater than 9 characters"],
 		},
-		responsability: {
+		occupation: {
 			type: String,
 			required: true,
 			trim: true,

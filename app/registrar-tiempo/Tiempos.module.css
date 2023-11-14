@@ -1,0 +1,14 @@
+.instructions h6 {
+    font-weight: bold;
+  }
+  
+  .instructions ul {
+    list-style-type: decimal;
+    padding-left: 20px;
+    color: #666; /* Color gris */
+  }
+  
+  .instructions li {
+    margin-bottom: 5px;
+    color: #666; /* Color gris */
+  }

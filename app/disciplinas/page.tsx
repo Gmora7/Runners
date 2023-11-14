@@ -16,17 +16,15 @@ enum eCategory {
 	U20 = "U20",
 	U23 = "U23",
 	Mayor = "Mayor",
-	General = "General",
 }
 
 const Disciplines = () => {
-	const [selectedCategory, setSelectedCategory] = useState<string>("General");
+	const [selectedCategory, setSelectedCategory] = useState<string>("U13");
 	const [disciplines, setDisciplines] = useState<IDiscipline[]>([]);
 
 	useEffect(() => {
 		const fetchData = async () => {
 			try {
-				console.log("fetching data");
 				const response = await fetch("/api/disciplines");
 				const json = await response.json();
 				setDisciplines(json);

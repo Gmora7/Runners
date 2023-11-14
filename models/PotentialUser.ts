@@ -1,12 +1,6 @@
 import { Schema, model, models } from "mongoose";
 import uniqueValidator from "mongoose-unique-validator";
-
-interface PotentialUser {
-	name: string;
-	lastname: string;
-	email: string;
-	phone: number;
-}
+import { PotentialUser } from "../types";
 
 const PotentialUserSchema = new Schema<PotentialUser>(
 	{
@@ -47,5 +41,5 @@ const PotentialUserSchema = new Schema<PotentialUser>(
 );
 PotentialUserSchema.plugin(uniqueValidator);
 
-export default models.PotentialUsers ||
+export default models.PotentialUser ||
 	model("PotentialUser", PotentialUserSchema);

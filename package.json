@@ -9,10 +9,14 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
     "@fullcalendar/daygrid": "^6.1.8",
     "@fullcalendar/react": "^6.1.8",
     "@material-tailwind/react": "^2.1.4",
-    "@types/node": "20.5.9",
+    "@mui/icons-material": "^5.14.16",
+    "@mui/material": "^5.14.16",
+    "@mui/styled-engine-sc": "^6.0.0-alpha.4",
     "@types/react-dom": "18.2.7",
     "autoprefixer": "10.4.15",
     "bcrypt": "^5.1.1",
@@ -32,15 +36,18 @@
     "react-big-calendar": "^1.8.2",
     "react-contact-list": "^0.1.0",
     "react-dom": "18.2.0",
-    "sharp": "^0.32.6",
+    "react-modal": "^3.16.1",
+    "styled-components": "^6.1.0",
     "tailwindcss": "3.3.3"
   },
   "devDependencies": {
     "@types/bcrypt": "^5.0.1",
     "@types/mongoose-unique-validator": "^1.0.8",
+    "@types/node": "^20.8.10",
     "@types/nodemailer": "^6.4.13",
     "@types/react": "18.2.21",
     "@types/react-big-calendar": "^1.6.4",
+    "@types/react-modal": "^3.16.2",
     "typescript": "5.2.2"
   }
 }

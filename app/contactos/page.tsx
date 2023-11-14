@@ -5,13 +5,7 @@ import Container from "@/components/Container/Container";
 import CardsContainer from "@/components/CardsContainer/CardsContainer";
 import { useState, useEffect } from "react";
 import ContactForm from "@/components/ContactForm/ContactForm";
-interface Contact {
-	_id: number;
-	name: string;
-	phoneNumber: string;
-	occupation: string;
-	imageUrl: string;
-}
+import { Contact } from "@/types";
 
 export default function Contacts() {
 	const [contacts, setContacts] = useState<Contact[]>([]);
@@ -36,7 +30,7 @@ export default function Contacts() {
 							src={contact.imageUrl}
 							occupation={contact.occupation}
 							name={contact.name}
-							phoneNumber={contact.phoneNumber}
+							phoneNumber={contact.phone}
 						/>
 					))}
 				</CardsContainer>

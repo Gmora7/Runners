@@ -36,7 +36,7 @@ export default function Calendar() {
 		<>
 			<div className="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
 				<span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
-					Calendario
+					Eventos
 				</span>
 				<FullCalendar
 					plugins={[dayGridPlugin]}

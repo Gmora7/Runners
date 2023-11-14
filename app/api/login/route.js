@@ -10,9 +10,12 @@ export async function POST(request) {
 		const { email, password } = body;
 		db.connect();
 		const user = await User.findOne({ email });
+		if (!user) {
+			return NextResponse.json("El usuario no existe.", { status: 404 });
+		}
 		const isMatch = await user.matchPassword(password);
-		if (!user || !isMatch) {
-			return NextResponse.json("Usuario no encontrado", { status: 404 });
+		if (!isMatch) {
+			return NextResponse.json("Contraseña incorrecta.", { status: 401 });
 		}
 		const token = jwt.sign(
 			{
@@ -28,7 +31,12 @@ export async function POST(request) {
 			path: "/",
 		});
 		return NextResponse.json(
-			{ message: "Inicio de sesión exitoso", token, rol: user.rol, identification: user.identification },
+			{
+				message: "Inicio de sesión exitoso",
+				token,
+				rol: user.rol,
+				identification: user.identification,
+			},
 			{ status: 200, headers: { "Set-Cookie": serialized } }
 		);
 	} catch (error) {

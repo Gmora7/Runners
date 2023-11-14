@@ -5,7 +5,7 @@ import { SetStateAction, useState } from "react";
 
 export default function Signup() {
 	const router = useRouter();
-	const [rol, setRol] = useState("atleta");
+	const[submit, setSubmit] = useState(false);
 	const [userData, setUserData] = useState({
 		name: "",
 		lastname: "",
@@ -34,17 +34,9 @@ export default function Signup() {
 		}
 	};
 
-	const handlerRol = (e: { target: { value: SetStateAction<string> } }) => {
-		setRol(e.target.value);
-		if (e.target.value === "atleta") {
-			setUserData({ ...userData, rol: true });
-		} else {
-			setUserData({ ...userData, rol: false });
-		}
-	};
-
 	const handlerSubmit = async (e: { preventDefault: () => void }) => {
 		e.preventDefault();
+		setSubmit(true);
 		try {
 			const response = await fetch("/api/users", {
 				method: "POST",
@@ -91,7 +83,9 @@ export default function Signup() {
 									}
 									className="w-full border rounded p-2"
 									placeholder="Nombre"
+									required
 								/>
+								{!userData.name && submit && <p className="text-red-500">Campo Requerido</p>}
 							</div>
 							<div className="mb-2">
 								<label
@@ -112,37 +106,9 @@ export default function Signup() {
 									}
 									className="w-full border rounded p-2"
 									placeholder="Apellidos"
+									required
 								/>
-							</div>
-							<div className="flex items-center">
-								<input
-									type="radio"
-									id="athlete"
-									name="rol"
-									value="atleta"
-									checked={rol === "atleta"}
-									onChange={handlerRol}
-								/>
-								<label
-									htmlFor="athlete"
-									className="font-bold text-xl ml-2 mr-2"
-								>
-									Atleta
-								</label>
-								<input
-									type="radio"
-									id="trainer"
-									name="rol"
-									value="entrenador"
-									checked={rol === "entrenador"}
-									onChange={handlerRol}
-								/>
-								<label
-									htmlFor="trainer"
-									className="font-bold text-xl ml-2"
-								>
-									Entrenador
-								</label>
+								{!userData.lastname && submit && <p className="text-red-500">Campo Requerido</p>}
 							</div>
 							<div className="mb-2">
 								<label
@@ -159,7 +125,9 @@ export default function Signup() {
 									onChange={handlerCedula}
 									className="w-full border rounded p-2"
 									placeholder="Cédula"
+									required
 								/>
+								{!userData.identification && submit && <p className="text-red-500">Campo Requerido</p>}
 							</div>
 							<div className="mb-2">
 								<label
@@ -179,7 +147,9 @@ export default function Signup() {
 										})
 									}
 									className="w-full border rounded p-2"
+									required
 								/>
+								{!userData.birth && submit && <p className="text-red-500">Campo Requerido</p>}
 							</div>
 							<div className="mb-2">
 								<label
@@ -196,7 +166,9 @@ export default function Signup() {
 									onChange={handlerCelular}
 									className="w-full border rounded p-2"
 									placeholder="Celular"
+									required
 								/>
+								{!userData.phone && submit && <p className="text-red-500">Campo Requerido</p>}
 							</div>
 							<div className="mb-2">
 								<label
@@ -217,7 +189,9 @@ export default function Signup() {
 									}
 									className="w-full border rounded p-2"
 									placeholder="Dirección"
+									required
 								/>
+								{!userData.location && submit && <p className="text-red-500">Campo Requerido</p>}
 							</div>
 							<div className="mb-2">
 								<label
@@ -238,7 +212,9 @@ export default function Signup() {
 									}
 									className="w-full border rounded p-2"
 									placeholder="Correo electrónico"
+									required
 								/>
+								{!userData.email && submit && <p className="text-red-500">Campo Requerido</p>}
 							</div>
 							<div>
 								<label
@@ -259,7 +235,9 @@ export default function Signup() {
 									}
 									className="w-full border rounded p-2"
 									placeholder="Contraseña"
+									required
 								/>
+								{!userData.password && submit && <p className="text-red-500">Campo Requerido</p>}
 							</div>
 							<div>
 								<label

@@ -23,7 +23,6 @@ export default async function sendMail(
 			if (error) {
 				throw new Error(error.message);
 			} else {
-				console.log("Email Sent");
 				return true;
 			}
 		});

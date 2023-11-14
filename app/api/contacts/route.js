@@ -18,7 +18,7 @@ export async function POST(request) {
 		const newContact = new Contact(body);
 		db.connect();
 		const savedContact = await newContact.save();
-		return NextResponse.json(savedContact);
+		return NextResponse.json(savedContact, { status: 201 });
 	} catch (error) {
 		return NextResponse.json(error.message, {
 			status: 400,

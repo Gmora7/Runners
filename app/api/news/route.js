@@ -18,7 +18,7 @@ export async function POST(request) {
 		const body = await request.json();
 		const newNews = new News(body);
 		const savedNews = await newNews.save();
-		return NextResponse.json(savedNews);
+		return NextResponse.json(savedNews, { status: 201 });
 	} catch (error) {
 		return NextResponse.json(error.message, {
 			status: 400,
@@ -28,15 +28,15 @@ export async function POST(request) {
 
 export async function DELETE(request) {
 	try {
-	  db.connect();
-	  const title = request.json(); 
-	  const deletedNew = await News.findOneAndRemove(title);
-	  if (!deletedNew) {
-		return NextResponse.json("Noticia no encontrada", { status: 404 });
-	  }
-  
-	  return NextResponse.json(deletedNew, { status: 200 });
+		db.connect();
+		const title = request.json();
+		const deletedNew = await News.findOneAndRemove(title);
+		if (!deletedNew) {
+			return NextResponse.json("Noticia no encontrada", { status: 404 });
+		}
+
+		return NextResponse.json(deletedNew, { status: 200 });
 	} catch (error) {
-	  return NextResponse.json(error.message, { status: 500 });
+		return NextResponse.json(error.message, { status: 500 });
 	}
-  }
+}

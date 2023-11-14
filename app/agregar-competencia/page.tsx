@@ -36,8 +36,6 @@ export default function AgregarCompetencia() {
 		const date = dateRef.current?.value;
 		const time = timeRef.current?.value;
 		const { categoriasString, disciplinasString } = convertirAString(seleccionCategorias, seleccionDisciplinas);
-		//console.log("disciplinas: ", disciplinasString);
-		//console.log("categorias: ", categoriasString);
 		const userData = { name, date, time, disciplines: disciplinasString, categories: categoriasString};
 		try {
 			const response = await fetch("/api/competences", {
@@ -61,17 +59,13 @@ export default function AgregarCompetencia() {
 
 	const handleSeleccionCategoria = (categoria: Categorie) => {
 		setSeleccionCategorias((prevSeleccion) => {
-		  // Clona el array de selección anterior
 		  const nuevoSeleccion = [...prevSeleccion];
 	  
-		  // Verifica si la categoría ya está en el array
 		  const categoriaIndex = nuevoSeleccion.findIndex((c) => c._id === categoria._id);
 	  
 		  if (categoriaIndex === -1) {
-			// Si la categoría no está en el array, la agrega
 			nuevoSeleccion.push(categoria);
 		  } else {
-			// Si la categoría ya está en el array, la quita
 			nuevoSeleccion.splice(categoriaIndex, 1);
 		  }
 	  
@@ -81,16 +75,12 @@ export default function AgregarCompetencia() {
 	  
 	  const handleSeleccionDisciplina = (disciplina: Discipline) => {
 		setSeleccionDisciplinas((prevSeleccion) => {
-		  // Clona el array de selección anterior
 		  const nuevoSeleccion = [...prevSeleccion];
-		  // Verifica si la disciplina ya está en el array
 		  const disciplinaIndex = nuevoSeleccion.findIndex((d) => d._id === disciplina._id);
 	  
 		  if (disciplinaIndex === -1) {
-			// Si la disciplina no está en el array, la agrega
 			nuevoSeleccion.push(disciplina);
 		  } else {
-			// Si la disciplina ya está en el array, la quita
 			nuevoSeleccion.splice(disciplinaIndex, 1);
 		  }
 	  
@@ -108,7 +98,6 @@ export default function AgregarCompetencia() {
             }
             
             const disciplinasRes = await response.json();
-            //console.log(disciplinasRes);
             setDisciplinas(disciplinasRes);
 
 			const responseCategories = await fetch(`api/categories`);
@@ -118,7 +107,6 @@ export default function AgregarCompetencia() {
             }
             
             const categoriesRes = await responseCategories.json();
-            //console.log(categoriesRes);
             setCategorias(categoriesRes);
 
           } catch (error) {
@@ -157,7 +145,7 @@ export default function AgregarCompetencia() {
 									htmlFor="date"
 									className="font-bold text-xl"
 								>
-									date de la Competencia:
+									Fecha de la Competencia:
 								</label>
 								<input
 									type="date"
@@ -172,7 +160,7 @@ export default function AgregarCompetencia() {
 									htmlFor="time"
 									className="font-bold text-xl"
 								>
-									time de la Competencia:
+									Hora de la Competencia:
 								</label>
 								<input
 									type="time"

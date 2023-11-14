@@ -8,7 +8,7 @@ export async function POST(request) {
 		const newCompetence = new Competence(body);
 		db.connect();
 		const savedCompetence = await newCompetence.save();
-		return NextResponse.json(savedCompetence);
+		return NextResponse.json(savedCompetence, { status: 201 });
 	} catch (error) {
 		return NextResponse.json(error.message, {
 			status: 400,

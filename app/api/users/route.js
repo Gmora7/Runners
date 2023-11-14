@@ -18,7 +18,7 @@ export async function POST(request) {
 		db.connect();
 		const newUser = new User(body);
 		const savedUser = await newUser.save();
-		return NextResponse.json(savedUser);
+		return NextResponse.json(savedUser, { status: 201 });
 	} catch (error) {
 		return NextResponse.json(error.message, {
 			status: 400,

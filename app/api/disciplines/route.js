@@ -8,6 +8,7 @@ export async function POST(request) {
 		const body = await request.json();
 		const { categories } = body;
 		db.connect();
+		//FIXME: No se está validando que las categorías existan
 		const categoryIds = await Promise.all(
 			categories.map(async (category) => {
 				const foundCategory = await Category.findOne({
@@ -21,7 +22,7 @@ export async function POST(request) {
 			categories: categoryIds.filter((categoryId) => categoryId !== null),
 		});
 		await newDiscipline.save();
-		return NextResponse.json({ status: 200 });
+		return NextResponse.json({ status: 201 });
 	} catch (error) {
 		return NextResponse.json(error.message, {
 			status: 400,
@@ -43,7 +44,7 @@ export async function GET() {
 				),
 			};
 		});
-		return NextResponse.json(disciplinesWithCategories);
+		return NextResponse.json(disciplinesWithCategories, { status: 200 });
 	} catch (error) {
 		return NextResponse.json(error.message, {
 			status: 500,

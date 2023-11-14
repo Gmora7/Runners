@@ -3,7 +3,7 @@ import { createContext, useContext, useState, useEffect } from "react";
 
 const AuthContext = createContext();
 
-export function UseAuth() {
+export function useAuth() {
 	return useContext(AuthContext);
 }
 
@@ -15,7 +15,6 @@ export function AuthProvider({ children }) {
 		const token = localStorage.getItem("token");
 		const expirationTime = localStorage.getItem("expirationTime");
 		const role = localStorage.getItem("userRole");
-		//console.log(role);
 
 		if (token && expirationTime) {
 			const currentTime = new Date().getTime();

@@ -2,7 +2,7 @@
 import { useAuth } from "./AuthContext";
 
 export function isAuthenticated(requiredRole) {
-  const { isLoggedIn, userRole } = UseAuth();
+  const { isLoggedIn, userRole } = useAuth();
 
   if (!isLoggedIn) {
     return false;

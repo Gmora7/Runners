@@ -1,12 +1,5 @@
 import { Schema, model, models } from "mongoose";
-
-interface News {
-	src: string;
-	category: string;
-	title: string;
-	body: string;
-	date: string;
-}
+import { News } from "@/types";
 
 const NewsSchema = new Schema<News>(
 	{

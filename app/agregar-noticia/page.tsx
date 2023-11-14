@@ -1,13 +1,12 @@
 "use client";
 import { useState } from "react";
-import { useRouter } from "next/navigation";
 import Button from "@/components/Button/Button";
 import Alert from "@/components/Alert/Alert";
+import { User } from "@/types";
 
-export default function AgregarNoticia() {
-	const router = useRouter();
+export default function AddNews() {
 	const [isSuccessful, setIsSuccessful] = useState<boolean | null>(null);
-	const [noticia, setNoticia] = useState({
+	const [news, setNews] = useState({
 		src: "",
 		category: "",
 		title: "",
@@ -15,7 +14,7 @@ export default function AgregarNoticia() {
 		date: new Date().toISOString().split("T")[0],
 	});
 
-	const handlerSubmit = async (e: { preventDefault: () => void }) => {
+	const handlerSubmit = async (e: React.FormEvent) => {
 		e.preventDefault();
 		try {
 			const response = await fetch("/api/news", {
@@ -23,15 +22,46 @@ export default function AgregarNoticia() {
 				headers: {
 					"Content-Type": "application/json",
 				},
-				body: JSON.stringify(noticia),
+				body: JSON.stringify(news),
 			});
 
 			if (!response.ok) {
 				setIsSuccessful(false);
-				throw new Error(
-					"Error HTTP: " + response.status + response.text()
-				);
+				return;
 			}
+
+			const newNews = await response.json();
+			const { title, body } = newNews;
+
+			const usersResponse = await fetch("/api/users");
+			if (!usersResponse.ok) {
+				setIsSuccessful(false);
+				return;
+			}
+
+			const users: User[] = await usersResponse.json();
+			const usersToNotify = users.filter((user) => user.isSuscribed);
+
+			await Promise.all(
+				usersToNotify.map(async (user) => {
+					const toEmail = user.email;
+					const optText = `${body}`;
+					const subject = `Nueva noticia: ${title}`;
+
+					const mailResponse = await fetch("/api/mail", {
+						method: "POST",
+						body: JSON.stringify({ toEmail, subject, optText }),
+						headers: {
+							"Content-Type": "application/json",
+						},
+					});
+
+					if (!mailResponse.ok) {
+						setIsSuccessful(false);
+						return;
+					}
+				})
+			);
 			setIsSuccessful(true);
 		} catch (error) {
 			console.error("Error al agregar la noticia...", error);
@@ -51,7 +81,7 @@ export default function AgregarNoticia() {
 						message={
 							isSuccessful
 								? "Noticia fue agregada correctamente!"
-								: "Error al agregar la noticia..."
+								: "Error al agregar la noticia."
 						}
 						onClose={handleAlertClose}
 						isSuccessful={isSuccessful}
@@ -70,10 +100,10 @@ export default function AgregarNoticia() {
 								<input
 									type="text"
 									id="title"
-									value={noticia.title}
+									value={news.title}
 									onChange={(e) =>
-										setNoticia({
-											...noticia,
+										setNews({
+											...news,
 											title: e.target.value,
 										})
 									}
@@ -93,10 +123,10 @@ export default function AgregarNoticia() {
 								<input
 									type="text"
 									id="category"
-									value={noticia.category}
+									value={news.category}
 									onChange={(e) =>
-										setNoticia({
-											...noticia,
+										setNews({
+											...news,
 											category: e.target.value,
 										})
 									}
@@ -116,10 +146,10 @@ export default function AgregarNoticia() {
 								<input
 									type="text"
 									id="imagen"
-									value={noticia.src}
+									value={news.src}
 									onChange={(e) =>
-										setNoticia({
-											...noticia,
+										setNews({
+											...news,
 											src: e.target.value,
 										})
 									}
@@ -141,10 +171,10 @@ export default function AgregarNoticia() {
 								</label>
 								<textarea
 									id="body"
-									value={noticia.body}
+									value={news.body}
 									onChange={(e) =>
-										setNoticia({
-											...noticia,
+										setNews({
+											...news,
 											body: e.target.value,
 										})
 									}

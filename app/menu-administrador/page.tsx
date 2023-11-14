@@ -1,5 +1,4 @@
 "use client";
-import Button from "@/components/Button/Button";
 import { useRouter } from "next/navigation";
 import Header from "@/components/Header/Header";
 import AdministratorOption from "@/components/AdministratorOption/AdministratorOption";
@@ -12,14 +11,23 @@ export default function AdminMenu() {
 	const handlerListAthletes = () => {
 		router.push("/listar-atletas");
 	};
-	const handlerListPotentialUsers = () => {
-		router.push("/usuarios-potenciales");
-	};
 	const handlerAddNews = () => {
 		router.push("/agregar-noticia");
 	};
 	const handlerDeleteNew = () => {
 		router.push("/eliminar-noticia");
+	};
+	const handlerPotentialUsers = () => {
+		router.push("/usuarios-potenciales");
+	};
+	const handlerPerformance = () => {
+		router.push("/administrar-tiempos");
+	};
+	const handlerDashboard = () => {
+		window.open(
+			"https://app.powerbi.com/reportEmbed?reportId=72a67810-3d29-4a2a-b324-54588bbad4d9&autoAuth=true&ctid=bfcf1d9d-93ea-43b1-b902-1daa68a64248",
+			"_blank"
+		);
 	};
 	return (
 		<div className="bg-gray-100 min-h-screen">
@@ -33,16 +41,10 @@ export default function AdminMenu() {
 						onClick={handlerAddCompetence}
 					/>
 					<AdministratorOption
-						title="Listar Atletas"
-						description="Lista a todos los atletas del equipo."
-						buttonLabel="Listar Atletas"
+						title="Listar/Eliminar Atletas"
+						description="Ve los atletas registrados en el sistema o remueve alguno."
+						buttonLabel="Listar/Eliminar"
 						onClick={handlerListAthletes}
-					/>
-					<AdministratorOption
-						title="Listar Usuarios Potenciales"
-						description="Lista a todos los usuarios potenciales del equipo."
-						buttonLabel="Listar Usuarios Potenciales"
-						onClick={handlerListPotentialUsers}
 					/>
 					<AdministratorOption
 						title="Agregar Noticia"
@@ -55,6 +57,24 @@ export default function AdminMenu() {
 						description="Eliminar una noticia para la comunidad."
 						buttonLabel="Eliminar Noticia"
 						onClick={handlerDeleteNew}
+					/>
+					<AdministratorOption
+						title="Usuarios potenciales"
+						description="Personas interesadas en unirse al equipo."
+						buttonLabel="Ver Usuarios Potenciales"
+						onClick={handlerPotentialUsers}
+					/>
+					<AdministratorOption
+						title="Administrar Tiempos de Atletas"
+						description="Modifica los tiempos registradas por los atletas."
+						buttonLabel="Administrar Tiempos"
+						onClick={handlerPerformance}
+					/>
+					<AdministratorOption
+						title="Dashboard de evaluaciones"
+						description="Ve las opiniones sobre los entrenadores."
+						buttonLabel="Ver"
+						onClick={handlerDashboard}
 					/>
 				</div>
 			</div>
