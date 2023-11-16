@@ -1,3 +1,4 @@
+import Image from "next/image";
 interface NewsCardProps {
 	src: string;
 	category: string;
@@ -16,7 +17,7 @@ export default function NewsCard({
 	return (
 		<div className="relative flex flex-row rounded-xl bg-white bg-clip-border text-gray-700 shadow-md m-4">
 			<div className="relative w-2/5 m-0 overflow-hidden text-gray-700 bg-white rounded-r-none shrink-0 rounded-xl bg-clip-border">
-				<img
+				<Image
 					src={src}
 					alt="image"
 					className="object-cover w-full h-full"

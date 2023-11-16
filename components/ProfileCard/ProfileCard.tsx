@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 interface ProfileCardProps {
 	src: string;
 	name: string;
@@ -14,7 +16,7 @@ const ProfileCard = ({
 	return (
 		<div className="relative flex flex-col rounded-xl bg-white bg-clip-border text-gray-700 shadow-md m-4 sm:w-80 md:w-96 items-center ">
 			<div className="relative mx-4 mt-4 h-80 overflow-hidden rounded-xl bg-white bg-clip-border text-gray-700 shadow-lg">
-				<img
+				<Image
 					src={src}
 					alt="profile-picture"
 					className="w-full h-full object-cover"

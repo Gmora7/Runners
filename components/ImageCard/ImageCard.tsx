@@ -1,6 +1,6 @@
 interface ImageCardProps {
 	src: string;
-	alt?: string;
+	alt: string;
 	title?: string;
 	description?: string;
 }
