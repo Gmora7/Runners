@@ -1,5 +1,5 @@
 "use client";
-import { UseAuthseAuth } from "./AuthContext";
+import { UseAuth } from "./AuthContext";
 
 export function isAuthenticated(requiredRole) {
   const { isLoggedIn, userRole } = UseAuth();
