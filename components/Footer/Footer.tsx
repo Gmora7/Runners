@@ -1,5 +1,4 @@
 import logo from "@/public/ccdr-logo.png";
-import Image from "next/image";
 
 const Footer = () => {
 	return (
@@ -8,13 +7,10 @@ const Footer = () => {
 				<div className="md:flex md:justify-between">
 					<div className="mb-6 md:mb-0">
 						<a className="flex items-center">
-							<Image
+							<img
 								src={logo.src}
+								className="h-8 mr-3"
 								alt="CCDR San José Logo"
-								width={200}
-								height={100}
-								className="mr-3"
-								style={{ width: "auto", height: "auto" }} // Add this line
 							/>
 							<span className="text-white text-2xl font-semibold">
 								CCDR San José

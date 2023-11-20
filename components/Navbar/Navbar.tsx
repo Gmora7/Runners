@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useAuth } from "@/app/AuthContext";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { Router } from "next/router";
+
 const Navbar = () => {
 	const { isLoggedIn, setIsLoggedIn, userRole, setUserRole } = useAuth();
 	const router = useRouter();
